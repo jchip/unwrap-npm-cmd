@@ -50,7 +50,7 @@ unwrapNpmCmd(cmd, options);
 | `path`     | Use instead of the `PATH` environment variable.            |
 | `jsOnly`   | Return only the JS file as command without node exe.       |
 | `relative` | Convert JS file to relative path from CWD.                 |
-| `cwd`      | Use instead of `process.cwd()` to relative file path from. |
+| `cwd`      | Use instead of `process.cwd()` to find relative path from. |
 
 # License
 
