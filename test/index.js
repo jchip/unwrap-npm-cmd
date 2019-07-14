@@ -4,6 +4,30 @@ const { expect } = require("chai");
 const unwrapNmpCmd = require("../lib");
 const Path = require("path");
 const which = require("which");
+const utils = require("../lib/utils");
+
+describe("utils", function() {
+  describe("quote", function() {
+    it("should quote string", () => {
+      expect(utils.quote("abc")).to.equal(`"abc"`);
+      expect(utils.quote(`"abc"`)).to.equal(`"abc"`);
+    });
+  });
+
+  describe("unquote", function() {
+    it("should unquote string", () => {
+      expect(utils.unquote(`"abc"`)).to.equal(`abc`);
+      expect(utils.unquote(`abc`)).to.equal(`abc`);
+    });
+  });
+
+  describe("relative", function() {
+    it("should make relative path from cwd", () => {
+      const r = utils.relative(`C:\\Users`, `C:\\Temp`);
+      expect(r).to.equal(`..\\Users`);
+    });
+  });
+});
 
 describe("unwrap-npm-cmd", function() {
   const saveWhich = which.sync;
@@ -14,6 +38,12 @@ describe("unwrap-npm-cmd", function() {
   it("should unwrap mocha", () => {
     const mochaExe = unwrapNmpCmd("mocha test");
     expect(mochaExe).contains(process.execPath);
+  });
+
+  it("should unwrap mocha as relative path", () => {
+    const mochaExe = unwrapNmpCmd("mocha test", { relative: true });
+    expect(mochaExe).contains(process.execPath);
+    expect(mochaExe).contains(`.\\node_modules\\mocha`);
   });
 
   it("should unwrap npm", () => {
