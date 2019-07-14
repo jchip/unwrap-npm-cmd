@@ -57,6 +57,15 @@ describe("unwrap-npm-cmd", function() {
     expect(npmExe).contains("npm-cli.js");
   });
 
+  it("should handle jsOnly and relative in later calls", () => {
+    let npmExe = unwrapNmpCmd("npm test");
+    expect(npmExe).contains(process.execPath);
+    expect(npmExe).contains("npm-cli.js");
+    npmExe = unwrapNmpCmd("npm", { jsOnly: true, relative: true });
+    expect(npmExe.split(" ").length, "expect only jsfile").to.equal(1);
+    expect(Path.isAbsolute(utils.unquote(npmExe)), "expect relative js file path").to.equal(false);
+  });
+
   it("should unwrap npx", () => {
     const npxExe = unwrapNmpCmd("npx test");
     expect(npxExe).contains(process.execPath);
