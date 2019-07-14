@@ -18,7 +18,7 @@ Output:
 ```cmd
 "C:\Users\userid\nvm\nodejs\bin\node.exe" "C:\Users\userid\nvm\nodejs\bin\node_modules\npm\bin\npm-cli.js" test
 "C:\Users\userid\nvm\nodejs\bin\node.exe" "C:\Users\userid\nvm\nodejs\bin\node_modules\npm\bin\npx-cli.js" mocha
-"C:\Users\userid\nvm\nodejs\bin\node.exe" "C:\Users\userid\project\node_modules\mocha\bin\_mocha test"
+"C:\Users\userid\nvm\nodejs\bin\node.exe" "C:\Users\userid\project\node_modules\mocha\bin\_mocha" test
 "C:\WINDOWS\system32\find.EXE" "name" package.json
 "C:\Users\userid\project\test\fixtures\hello.CMD" world
 ```
@@ -33,7 +33,7 @@ Would effectivly be doing:
 
 ```js
 child.spawnSync(
-  `"C:\\Users\\userid\\nvm\\nodejs\\bin\\node.exe" "C:\\Users\\userid\\project\\node_modules\\mocha\\bin\\_mocha test"`
+  `"C:\\Users\\userid\\nvm\\nodejs\\bin\\node.exe" "C:\\Users\\userid\\project\\node_modules\\mocha\\bin\\_mocha" test`
 );
 ```
 
