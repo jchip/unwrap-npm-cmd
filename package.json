@@ -1,0 +1,57 @@
+{
+  "name": "unwrap-npm-cmd",
+  "version": "0.1.0",
+  "description": "Unwrap npm's node.js bin CMD batch for js files on Windows",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "nyc node_modules/mocha/bin/_mocha",
+    "sample": "node test/fixtures/sample.js"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "unwrap-npm-cmd",
+    "unwrap",
+    "npm",
+    "cmd",
+    "batch",
+    "windows"
+  ],
+  "author": "Joel Chen <joel123@gmail.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jchip/unwrap-npm-cmd.git"
+  },
+  "dependencies": {
+    "which": "^1.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "cache": true,
+    "all": true,
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "exclude": [
+      "coverage",
+      "test"
+    ]
+  }
+}
