@@ -21,6 +21,12 @@ describe("unwrap-npm-cmd", function() {
     expect(npmExe).contains(process.execPath);
   });
 
+  it("should unwrap npm without node exe if jsOnly is set", () => {
+    const npmExe = unwrapNmpCmd("npm test", { jsOnly: true });
+    expect(npmExe).not.contains(process.execPath);
+    expect(npmExe).contains("npm-cli.js");
+  });
+
   it("should unwrap npx", () => {
     const npxExe = unwrapNmpCmd("npx test");
     expect(npxExe).contains(process.execPath);
