@@ -10,17 +10,17 @@ console.log(unwrapNpmCmd("npm test"));
 console.log(unwrapNpmCmd("npx mocha", { relative: true }));
 console.log(unwrapNpmCmd("mocha test", { jsOnly: true }));
 console.log(unwrapNpmCmd(`find "name" package.json`));
-console.log(unwrapNpmCmd("hello world", { relative: true, path: __dirname }));
+console.log(unwrapNpmCmd("hello world", { path: __dirname }));
 ```
 
 Output:
 
 ```cmd
 "C:\Users\userid\nvm\nodejs\bin\node.exe" "C:\Users\userid\nvm\nodejs\bin\node_modules\npm\bin\npm-cli.js" test
-"C:\Users\userid\nvm\nodejs\bin\node.exe" ..\nvm\nodejs\bin\node_modules\npm\bin\npx-cli.js mocha
+"C:\Users\userid\nvm\nodejs\bin\node.exe" "..\nvm\nodejs\bin\node_modules\npm\bin\npx-cli.js" mocha
 "C:\Users\userid\unwrap-npm-cmd\node_modules\mocha\bin\mocha" test
 "C:\WINDOWS\system32\find.EXE" "name" package.json
-".\test\fixtures\hello.CMD" world
+"C:\Users\userid\unwrap-npm-cmd\test\fixtures\hello.CMD" world
 ```
 
 ## Usage
